@@ -44,7 +44,7 @@ export default function ServicesPage() {
 
       <main className="flex-grow">
         {/* Full-Width Edge-to-Edge Top Banner with Curved Bottom Sides */}
-        <section className="relative w-full h-[340px] sm:h-[460px] lg:h-[540px] overflow-hidden bg-stone-900 group rounded-b-[32px] sm:rounded-b-[50px] lg:rounded-b-[70px] shadow-2xl border-b border-[#B35C37]/30">
+        <section className="relative w-full h-[360px] sm:h-[460px] lg:h-[540px] overflow-hidden bg-stone-900 group rounded-b-[32px] sm:rounded-b-[50px] lg:rounded-b-[70px] shadow-2xl border-b border-[#B35C37]/30">
           {/* Banner Background Image */}
           <Image
             src="/curtain_dining_grand.jpg"
