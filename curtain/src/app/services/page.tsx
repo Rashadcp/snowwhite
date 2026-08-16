@@ -43,8 +43,8 @@ export default function ServicesPage() {
       <Navbar onOpenConsultation={() => setIsConsultationOpen(true)} />
 
       <main className="flex-grow">
-        {/* Full-Width Edge-to-Edge Top Banner with Curved Bottom Sides featuring work3.jpeg */}
-        <section className="relative w-full h-[450px] sm:h-[580px] lg:h-[650px] overflow-hidden bg-stone-900 group rounded-b-[40px] sm:rounded-b-[60px] lg:rounded-b-[80px] shadow-2xl border-b border-[#B35C37]/30">
+        {/* Full-Width Edge-to-Edge Top Banner with Curved Bottom Sides */}
+        <section className="relative w-full h-[340px] sm:h-[460px] lg:h-[540px] overflow-hidden bg-stone-900 group rounded-b-[32px] sm:rounded-b-[50px] lg:rounded-b-[70px] shadow-2xl border-b border-[#B35C37]/30">
           {/* Banner Background Image */}
           <Image
             src="/curtain_dining_grand.jpg"
@@ -61,14 +61,14 @@ export default function ServicesPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-stone-950/80 via-transparent to-transparent pointer-events-none" />
 
           {/* Banner Content Container Centered */}
-          <div className="absolute inset-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center pt-20">
-            <div className="space-y-4 max-w-4xl text-center text-white z-10 mx-auto">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 backdrop-blur-md text-xs font-bold text-white uppercase border border-white/20 shadow-md">
-                <Sparkles className="w-3.5 h-3.5 text-[#D97E59]" />
+          <div className="absolute inset-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center pt-16 sm:pt-20">
+            <div className="space-y-3 sm:space-y-4 max-w-4xl text-center text-white z-10 mx-auto">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-[11px] sm:text-xs font-bold text-white uppercase border border-white/20 shadow-md">
+                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#D97E59]" />
                 <span>End-to-End Atelier Solutions</span>
               </div>
 
-              <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight text-white drop-shadow-2xl">
+              <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white drop-shadow-2xl">
                 Services & <span className="text-[#D97E59]">Atelier Solutions</span>
               </h1>
             </div>
