@@ -186,6 +186,30 @@ const GALLERY_WORKS: GalleryWorkItem[] = [
     trackType: "Ceiling Recessed Wave Track Rail",
     tag: "Workroom Showcase 14",
   },
+  {
+    id: "work-15",
+    image: "/curtain_bedroom_tied_back.jpg",
+    category: "bedroom",
+    categoryLabel: "Master Suite Sanctuary",
+    title: "Tailored Warm Sand & Sheer Bedroom Suite",
+    subtitle: "Architectural Cove Light & French Pinch Pleat",
+    description: "Opulent warm sand drapery with tailored tie-backs framing floor-to-ceiling sheer curtains and warm ambient ceiling illumination.",
+    fabricType: "Belgian Heavy Sand Weave & Translucent Voile",
+    trackType: "Dual Tandem Recessed Channel Track",
+    tag: "Workroom Showcase 15",
+  },
+  {
+    id: "work-16",
+    image: "/curtain_bedroom_sunlit_sheer.jpg",
+    category: "bedroom",
+    categoryLabel: "Sunlit Bedroom Retreat",
+    title: "Continuous Pearl Sheer Ripplefold Wave",
+    subtitle: "Soft Morning Daylight Solar Diffusion",
+    description: "Continuous ceiling-to-floor pearl off-white ripplefold wave sheer diffusing natural sunlight across modern minimalist master bedrooms.",
+    fabricType: "100% French Flax Organic Sheer Voile",
+    trackType: "Ultra-Quiet S-Fold Ceiling Wave Rail",
+    tag: "Workroom Showcase 16",
+  },
 ];
 
 interface CollectionShowcaseProps {
