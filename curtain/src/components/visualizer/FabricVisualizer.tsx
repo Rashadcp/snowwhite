@@ -260,15 +260,20 @@ export default function FabricVisualizer({ showGalleryLink = false, onOpenConsul
 
             {/* 4. Outdoor Light Condition */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-3">
-                4. Outdoor Light Condition
-              </label>
+              <div className="flex items-center justify-between mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-stone-600">
+                  4. Outdoor Light Condition
+                </label>
+                <span className="text-[10px] font-bold text-[#8A3D1E] uppercase bg-[#B35C37]/15 px-2 py-0.5 rounded-full">
+                  Solar Test
+                </span>
+              </div>
               <div className="grid grid-cols-3 gap-2">
                 <button
                   onClick={() => setLightMode("day")}
                   className={`py-2.5 px-3 rounded-2xl border flex items-center justify-center gap-2 text-xs font-bold cursor-pointer transition-all ${
                     lightMode === "day"
-                      ? "bg-amber-100/90 border-amber-400 text-amber-900 shadow-sm"
+                      ? "bg-amber-100/90 border-amber-400 text-amber-900 shadow-sm ring-2 ring-amber-400/40"
                       : "bg-white/80 border-stone-200 text-stone-600 hover:text-stone-900"
                   }`}
                 >
@@ -280,7 +285,7 @@ export default function FabricVisualizer({ showGalleryLink = false, onOpenConsul
                   onClick={() => setLightMode("sunset")}
                   className={`py-2.5 px-3 rounded-2xl border flex items-center justify-center gap-2 text-xs font-bold cursor-pointer transition-all ${
                     lightMode === "sunset"
-                      ? "bg-orange-100/90 border-orange-400 text-orange-900 shadow-sm"
+                      ? "bg-orange-100/90 border-orange-400 text-orange-900 shadow-sm ring-2 ring-orange-400/40"
                       : "bg-white/80 border-stone-200 text-stone-600 hover:text-stone-900"
                   }`}
                 >
@@ -292,7 +297,7 @@ export default function FabricVisualizer({ showGalleryLink = false, onOpenConsul
                   onClick={() => setLightMode("night")}
                   className={`py-2.5 px-3 rounded-2xl border flex items-center justify-center gap-2 text-xs font-bold cursor-pointer transition-all ${
                     lightMode === "night"
-                      ? "bg-indigo-100/90 border-indigo-400 text-indigo-900 shadow-sm"
+                      ? "bg-indigo-100/90 border-indigo-400 text-indigo-900 shadow-sm ring-2 ring-indigo-400/40"
                       : "bg-white/80 border-stone-200 text-stone-600 hover:text-stone-900"
                   }`}
                 >
@@ -300,6 +305,10 @@ export default function FabricVisualizer({ showGalleryLink = false, onOpenConsul
                   Night
                 </button>
               </div>
+              <p className="text-[11px] text-[#8A3D1E] font-medium mt-2 flex items-center gap-1.5 bg-[#B35C37]/10 px-3 py-1.5 rounded-xl border border-[#B35C37]/20">
+                <Sparkles className="w-3 h-3 text-[#B35C37] shrink-0 animate-pulse" />
+                <span>Tap modes to test solar daylight diffusion & nighttime privacy</span>
+              </p>
             </div>
 
             {/* 5. Somfy Motorized Track Controls & Drape Slider */}
@@ -313,12 +322,12 @@ export default function FabricVisualizer({ showGalleryLink = false, onOpenConsul
               </div>
 
               {/* Quick Motorized Action Trigger Buttons */}
-              <div className="grid grid-cols-3 gap-2 mb-3">
+              <div className="grid grid-cols-3 gap-2 mb-2">
                 <button
                   onClick={() => setMotorState("opening")}
                   className={`py-2 px-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                     motorState === "opening"
-                      ? "bg-[#B35C37] text-white border-[#B35C37] animate-pulse"
+                      ? "bg-[#B35C37] text-white border-[#B35C37] animate-pulse shadow-md"
                       : "bg-white border-stone-200 text-stone-700 hover:bg-stone-50"
                   }`}
                 >
@@ -336,7 +345,7 @@ export default function FabricVisualizer({ showGalleryLink = false, onOpenConsul
                   onClick={() => setMotorState("closing")}
                   className={`py-2 px-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                     motorState === "closing"
-                      ? "bg-[#B35C37] text-white border-[#B35C37] animate-pulse"
+                      ? "bg-[#B35C37] text-white border-[#B35C37] animate-pulse shadow-md"
                       : "bg-white border-stone-200 text-stone-700 hover:bg-stone-50"
                   }`}
                 >
@@ -356,6 +365,11 @@ export default function FabricVisualizer({ showGalleryLink = false, onOpenConsul
                 }}
                 className="w-full h-2.5 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-[#B35C37]"
               />
+              <p className="text-[10px] text-stone-500 mt-1 flex items-center justify-between font-mono">
+                <span>Closed (0%)</span>
+                <span className="text-[#8A3D1E] font-sans font-bold">◄ Drag slider to position drapes ►</span>
+                <span>Stacked (90%)</span>
+              </p>
             </div>
 
             {/* Spec Sheet Pill Highlights */}
@@ -520,6 +534,12 @@ export default function FabricVisualizer({ showGalleryLink = false, onOpenConsul
                   </div>
 
                 </div>
+              </div>
+
+              {/* Floating Interactive Canvas Micro-Guide Badge */}
+              <div className="relative z-20 self-center mx-auto mb-2 flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-white/25 text-white text-[11px] font-medium shadow-lg pointer-events-none">
+                <Sparkles className="w-3.5 h-3.5 text-amber-300 shrink-0 animate-pulse" />
+                <span>Live 3D Studio: Switch lighting or slide Somfy® track</span>
               </div>
 
               {/* Bottom Canvas Footer Controls */}
