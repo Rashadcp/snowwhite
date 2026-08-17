@@ -81,46 +81,46 @@ export default function ContactPage() {
         </section>
 
         {/* Direct Founders Quick Dial Cards */}
-        <section className="pb-12 bg-transparent">
+        <section className="py-12 sm:py-16 bg-transparent">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
               
               {/* Founder 1 Card */}
-              <div className="glass-card-bronze p-6 rounded-3xl border border-[#B35C37]/30 shadow-lg flex items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl overflow-hidden shrink-0 border border-[#B35C37]/40 relative">
-                    <Image src="/owner1.png" alt="Firoskhan" fill sizes="56px" className="object-cover object-top" />
+              <div className="glass-card-bronze p-6 sm:p-8 lg:p-10 rounded-3xl border border-[#B35C37]/30 shadow-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-4 h-full">
+                <div className="flex items-center gap-4 sm:gap-6 flex-1 min-w-0 w-full">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl overflow-hidden shrink-0 border border-[#B35C37]/40 relative shadow-sm">
+                    <Image src="/owner1.png" alt="Firoskhan" fill sizes="(max-width: 640px) 80px, 96px" className="object-cover object-top" />
                   </div>
-                  <div>
-                    <h4 className="font-serif font-bold text-stone-900 text-lg">Firoskhan</h4>
-                    <p className="text-xs text-[#8A3D1E] font-bold uppercase">Co-Founder & Managing Partner</p>
+                  <div className="flex-1 min-w-0 pr-2">
+                    <h4 className="font-serif font-bold text-stone-900 text-xl sm:text-2xl">Firoskhan</h4>
+                    <p className="text-sm text-[#8A3D1E] font-bold uppercase mt-1 leading-tight">Co-Founder & Managing Partner</p>
                   </div>
                 </div>
                 <a
                   href="tel:9539437537"
-                  className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#B35C37] to-[#D97E59] text-white text-xs font-bold uppercase tracking-wider hover:shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-3.5 rounded-full bg-gradient-to-r from-[#B35C37] to-[#D97E59] text-white text-sm font-bold uppercase tracking-wider hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer shrink-0"
                 >
-                  <Phone className="w-3.5 h-3.5" />
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span>Call</span>
                 </a>
               </div>
 
               {/* Founder 2 Card */}
-              <div className="glass-card-bronze p-6 rounded-3xl border border-[#B35C37]/30 shadow-lg flex items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl overflow-hidden shrink-0 border border-[#B35C37]/40 relative">
-                    <Image src="/owner2.png" alt="Sharafudheen" fill sizes="56px" className="object-cover object-center" />
+              <div className="glass-card-bronze p-6 sm:p-8 lg:p-10 rounded-3xl border border-[#B35C37]/30 shadow-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-4 h-full">
+                <div className="flex items-center gap-4 sm:gap-6 flex-1 min-w-0 w-full">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl overflow-hidden shrink-0 border border-[#B35C37]/40 relative shadow-sm">
+                    <Image src="/owner2.png" alt="Sharafudheen" fill sizes="(max-width: 640px) 80px, 96px" className="object-cover object-center" />
                   </div>
-                  <div>
-                    <h4 className="font-serif font-bold text-stone-900 text-lg">Sharafudheen</h4>
-                    <p className="text-xs text-[#8A3D1E] font-bold uppercase">Co-Founder & Managing Partner</p>
+                  <div className="flex-1 min-w-0 pr-2">
+                    <h4 className="font-serif font-bold text-stone-900 text-xl sm:text-2xl">Sharafudheen</h4>
+                    <p className="text-sm text-[#8A3D1E] font-bold uppercase mt-1 leading-tight">Co-Founder & Managing Partner</p>
                   </div>
                 </div>
                 <a
                   href="tel:+919744044819"
-                  className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#B35C37] to-[#D97E59] text-white text-xs font-bold uppercase tracking-wider hover:shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-3.5 rounded-full bg-gradient-to-r from-[#B35C37] to-[#D97E59] text-white text-sm font-bold uppercase tracking-wider hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer shrink-0"
                 >
-                  <Phone className="w-3.5 h-3.5" />
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span>Call</span>
                 </a>
               </div>
