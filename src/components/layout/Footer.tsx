@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Layers, ShieldCheck, Award, Sparkles, Send, Phone, Mail, MapPin } from "lucide-react";
+import { ShieldCheck, Award, Sparkles, Send, Phone, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -69,7 +69,7 @@ export default function Footer() {
             <div className="space-y-2 pt-2 text-stone-300">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-[#D97E59] shrink-0 mt-0.5" />
-                <span>Snow White Decor, Opp. Ma'din Public School, Melmuri (P.O), Malappuram (Dist), Kerala - 676514</span>
+                <span>Snow White Decor, Opp. Ma&apos;din Public School, Melmuri (P.O), Malappuram (Dist), Kerala - 676514</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-[#D97E59] shrink-0" />
@@ -147,8 +147,19 @@ export default function Footer() {
 
         </div>
 
-        <div className="pt-12 mt-12 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between text-stone-500 text-[11px] gap-4">
+        <div className="pt-12 mt-12 border-t border-stone-800 flex flex-col md:flex-row items-center justify-between text-stone-500 text-[11px] gap-4">
           <p>© 2026 Snow White Haute Draperie LLC. All rights reserved.</p>
+          <p>
+            Developed by{" "}
+            <a
+              href="https://winshineinfotech.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-stone-400 hover:text-[#D97E59] transition-colors underline underline-offset-4"
+            >
+              Winshine Infotech
+            </a>
+          </p>
           <div className="flex items-center gap-6">
             <a href="#" className="hover:text-stone-300">Privacy Policy</a>
             <a href="#" className="hover:text-stone-300">Terms of Service</a>
