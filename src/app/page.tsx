@@ -11,7 +11,6 @@ import AutomatedCurtainShowcase from "@/components/sections/AutomatedCurtainShow
 import ContactFormSection from "@/components/sections/ContactFormSection";
 import ConsultationModal from "@/components/modals/ConsultationModal";
 import Footer from "@/components/layout/Footer";
-import CurtainEntranceOverlay from "@/components/layout/CurtainEntranceOverlay";
 import Link from "next/link";
 import { ArrowRight, Sparkles, Layers, Mail } from "lucide-react";
 
@@ -20,9 +19,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[#1C1917] selection:bg-[#B35C37] selection:text-white relative">
-      {/* Cinematic Entrance Curtain Animation (Splits on page load) */}
-      <CurtainEntranceOverlay />
-
       {/* Top Header Navbar */}
       <Navbar onOpenConsultation={() => setIsConsultationOpen(true)} />
 
