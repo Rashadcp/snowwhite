@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "zip": "python scripts/build-zip.py",
     "start": "next start",
     "lint": "eslint"
   },
