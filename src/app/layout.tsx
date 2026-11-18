@@ -28,8 +28,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://snowwhitedecor.com"),
   title: {
-    default: "Snow White Decor | Bespoke Luxury Curtains & Blinds Malappuram",
-    template: "%s | Snow White Decor",
+    default: "Snow White | Luxury Curtains & Motorized Blinds Malappuram",
+    template: "%s | Snow White",
   },
   description:
     "Experience handcrafted luxury drapery, motorized smart curtain systems, and bespoke interior textiles tailored by Snow White Decor in Melmuri, Malappuram, Kerala.",
@@ -61,11 +61,11 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Snow White Decor | Bespoke Luxury Curtains & Motorized Blinds",
+    title: "Snow White | Bespoke Luxury Curtains & Motorized Blinds Malappuram",
     description:
-      "Handcrafted luxury drapery, motorized smart curtain systems, and bespoke interior textiles tailored by Snow White Decor in Melmuri, Malappuram, Kerala.",
+      "Handcrafted luxury drapery, motorized smart curtain systems, and bespoke interior textiles tailored by Snow White in Melmuri, Malappuram, Kerala.",
     url: "https://snowwhitedecor.com",
-    siteName: "Snow White Decor",
+    siteName: "Snow White",
     locale: "en_IN",
     type: "website",
     images: [
@@ -73,13 +73,13 @@ export const metadata: Metadata = {
         url: "/curtain_hero_minimal_sand.jpg",
         width: 1200,
         height: 630,
-        alt: "Snow White Decor - Luxury Curtains and Interior Textiles",
+        alt: "Snow White - Luxury Curtains and Interior Textiles",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Snow White Decor | Bespoke Luxury Curtains & Blinds Malappuram",
+    title: "Snow White | Bespoke Luxury Curtains & Blinds Malappuram",
     description:
       "Handcrafted luxury drapery and motorized smart curtain systems in Melmuri, Malappuram, Kerala.",
     images: ["/curtain_hero_minimal_sand.jpg"],
