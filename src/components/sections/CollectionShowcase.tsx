@@ -19,6 +19,41 @@ interface GalleryWorkItem {
 
 const GALLERY_WORKS: GalleryWorkItem[] = [
   {
+    id: "gallery-bedroom-warm", image: "/gallery-bedroom-warm.jpg", category: "bedroom",
+    categoryLabel: "Bedroom Suite", title: "Warm Layered Bedroom Drapes",
+    subtitle: "Soft Sheers & Full-Length Curtains",
+    description: "Warm-toned curtains frame a sheer window layer in a softly lit bedroom.",
+    fabricType: "Layered curtains and sheers", trackType: "Ceiling-mounted curtains", tag: "Bedroom Installation",
+  },
+  {
+    id: "gallery-bedroom-grey", image: "/gallery-bedroom-grey.jpg", category: "bedroom",
+    categoryLabel: "Bedroom Suite", title: "Grey Bedroom Drapes",
+    subtitle: "A Calm, Layered Window",
+    description: "Floor-length grey curtains and a sheer inner layer complement a contemporary bedroom.",
+    fabricType: "Layered curtains and sheers", trackType: "Ceiling-mounted curtains", tag: "Bedroom Installation",
+  },
+  {
+    id: "gallery-living-light", image: "/gallery-living-light.jpg", category: "living",
+    categoryLabel: "Living Room", title: "Soft Neutral Living Room Drapes",
+    subtitle: "Layered Window Dressing",
+    description: "Neutral curtains and soft sheers bring a finished look to a bright living space.",
+    fabricType: "Layered curtains and sheers", trackType: "Ceiling-mounted curtains", tag: "Living Room Installation",
+  },
+  {
+    id: "gallery-sheer-window", image: "/gallery-sheer-window.jpg", category: "sheer",
+    categoryLabel: "Sheer Curtains", title: "Floor-Length Window Sheers",
+    subtitle: "Light & Privacy",
+    description: "Full-length sheer curtains soften the daylight entering this window.",
+    fabricType: "Sheer curtains", trackType: "Ceiling-mounted curtains", tag: "Sheer Installation",
+  },
+  {
+    id: "gallery-living-grand", image: "/gallery-living-grand.jpg", category: "living",
+    categoryLabel: "Living Room", title: "Full-Wall Living Room Drapes",
+    subtitle: "A Dramatic Curtain Wall",
+    description: "Deep neutral drapes wrap around a spacious living room beneath a statement chandelier.",
+    fabricType: "Full-length drapes", trackType: "Ceiling-mounted curtains", tag: "Living Room Installation",
+  },
+  {
     id: "work-1",
     image: "/work1.jpeg",
     category: "living",

@@ -256,10 +256,13 @@ export default function HeroSection({ onOpenConsultation }: HeroSectionProps) {
           })}
         </div>
 
-        {/* Clear & Easy-to-Understand Brand Statement */}
-        <div className="text-center max-w-3xl mx-auto mt-8 sm:mt-4 mb-4 pt-2 sm:pt-0 px-4">
-          <p className="font-serif text-stone-900 text-sm sm:text-lg md:text-xl font-semibold leading-relaxed tracking-wide">
-            <span className="text-[#B35C37]">Snow White Home Decors</span> transforms your living spaces with custom hand-tailored luxury curtains, silent motorized smart blinds, and premium interior fabrics—crafted with millimeter precision for every home.
+        {/* Clear & Easy-to-Understand Brand Statement with SEO H1 Heading */}
+        <div className="text-center max-w-4xl mx-auto mt-8 sm:mt-4 mb-4 pt-2 sm:pt-0 px-4">
+          <h1 className="font-serif text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-stone-900 mb-3 leading-tight">
+            Bespoke Luxury Curtains &amp; Motorized Blinds in <span className="text-[#B35C37]">Malappuram</span>
+          </h1>
+          <p className="font-serif text-stone-700 text-sm sm:text-base md:text-lg font-medium leading-relaxed tracking-wide max-w-3xl mx-auto">
+            <strong className="font-semibold text-stone-900">Snow White Decor</strong> transforms your living spaces with custom hand-tailored luxury curtains, silent motorized smart blinds, and premium interior fabrics—crafted with millimeter precision for luxury residences across Kerala.
           </p>
         </div>
 

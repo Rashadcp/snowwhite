@@ -1,0 +1,6 @@
+# Allow all search engine crawlers
+User-agent: *
+Allow: /
+
+# XML Sitemap location
+Sitemap: https://snowwhitedecor.com/sitemap.xml

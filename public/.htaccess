@@ -1,0 +1,12 @@
+Options -MultiViews
+RewriteEngine On
+
+# Keep page URLs without a trailing slash so relative Next.js assets resolve.
+RewriteCond %{THE_REQUEST} \s/+((?:about|contact|gallery|services))/[?\s] [NC]
+RewriteRule ^ %1 [R=301,L,NE]
+
+# Next.js exports these routes as HTML files while also creating directories
+# for their navigation data. Resolve the page before Apache checks directories.
+RewriteRule ^(about|contact|gallery|services)$ $1.html [L]
+
+ErrorDocument 404 /404.html
