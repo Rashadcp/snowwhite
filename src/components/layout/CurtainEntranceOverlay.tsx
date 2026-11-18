@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 
 interface CurtainEntranceProps {
@@ -8,122 +8,74 @@ interface CurtainEntranceProps {
 }
 
 export default function CurtainEntranceOverlay({ onOpeningComplete }: CurtainEntranceProps) {
-  const [progress, setProgress] = useState(0);
-  const [isUnlocked, setIsUnlocked] = useState(false);
-  const isUnlockedRef = useRef(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isRemoved, setIsRemoved] = useState(false);
 
-  const completeUnveil = useCallback(() => {
-    if (isUnlockedRef.current) return;
-    isUnlockedRef.current = true;
-    setIsUnlocked(true);
+  const triggerOpen = useCallback(() => {
+    setIsOpen(true);
     if (typeof document !== "undefined") {
       document.body.style.overflow = "";
     }
-    if (onOpeningComplete) onOpeningComplete();
+    // Remove from DOM completely after 1.1s animation finishes
+    setTimeout(() => {
+      setIsRemoved(true);
+      if (onOpeningComplete) onOpeningComplete();
+    }, 1100);
   }, [onOpeningComplete]);
 
-  // Gentle, elegant unveil glide animation
-  const handleUnveilClick = useCallback(() => {
-    if (isUnlockedRef.current) return;
-    let startTimestamp: number | null = null;
-    const duration = 1000; // 1.0s silky smooth unveil
-
-    const step = (timestamp: number) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const elapsed = timestamp - startTimestamp;
-      const fraction = Math.min(1, elapsed / duration);
-      
-      // Smooth ease-out cubic
-      const easeP = 1 - Math.pow(1 - fraction, 3);
-      setProgress(easeP);
-
-      if (fraction < 1 && !isUnlockedRef.current) {
-        requestAnimationFrame(step);
-      } else {
-        completeUnveil();
-      }
-    };
-
-    requestAnimationFrame(step);
-  }, [completeUnveil]);
-
   useEffect(() => {
-    // If page is already scrolled down on reload, bypass overlay immediately
+    // If page is already scrolled down, don't show curtain
     if (window.scrollY > 40) {
-      completeUnveil();
+      setIsRemoved(true);
       return;
     }
 
-    if (isUnlocked) return;
-
-    // Pin body scroll during entrance curtain animation
+    // Pin scroll during initial brief entrance
     document.body.style.overflow = "hidden";
 
-    // Automatic 1.5-second timer to unveil smoothly
+    // Auto-open smoothly after 500ms
     const autoOpenTimer = setTimeout(() => {
-      handleUnveilClick();
+      triggerOpen();
+    }, 600);
+
+    // Hard failsafe (max 1.5s) to guarantee unpin
+    const failsafeTimer = setTimeout(() => {
+      triggerOpen();
     }, 1500);
 
-    // Hard Failsafe Safety Timer (2.5 seconds max) - GUARANTEES scroll un-pin even if tab was backgrounded
-    const failsafeTimer = setTimeout(() => {
-      completeUnveil();
-    }, 2500);
-
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
+    const handleInteraction = () => {
       clearTimeout(autoOpenTimer);
-      handleUnveilClick();
+      triggerOpen();
     };
 
-    const handleTouchStart = () => {
-      clearTimeout(autoOpenTimer);
-      handleUnveilClick();
-    };
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (["ArrowDown", "PageDown", "Space"].includes(e.code)) {
-        e.preventDefault();
-        clearTimeout(autoOpenTimer);
-        handleUnveilClick();
-      }
-    };
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("wheel", handleInteraction, { passive: true });
+    window.addEventListener("touchstart", handleInteraction, { passive: true });
+    window.addEventListener("keydown", handleInteraction, { passive: true });
 
     return () => {
       clearTimeout(autoOpenTimer);
       clearTimeout(failsafeTimer);
       document.body.style.overflow = "";
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("wheel", handleInteraction);
+      window.removeEventListener("touchstart", handleInteraction);
+      window.removeEventListener("keydown", handleInteraction);
     };
-  }, [isUnlocked, completeUnveil, handleUnveilClick]);
+  }, [triggerOpen]);
 
-  if (isUnlocked) return null;
-
-  // Parallel curtain translation
-  const leftTranslateX = -progress * 105;
-  const rightTranslateX = progress * 105;
-  const fabricGatherScale = 1 - progress * 0.35;
-
-  const centerOpacity = Math.max(0, 1 - progress * 2.2);
-  const centerScale = 1 - progress * 0.2;
-  const ambientOpacity = Math.max(0, 1 - progress * 1.5);
+  if (isRemoved) return null;
 
   return (
     <div
-      onClick={handleUnveilClick}
-      className={`fixed inset-0 z-[100] h-[100dvh] overflow-hidden flex items-center justify-center select-none cursor-pointer touch-none ${
-        progress > 0.8 ? "pointer-events-none opacity-0" : "pointer-events-auto opacity-100"
-      } transition-opacity duration-300`}
+      onClick={triggerOpen}
+      className={`fixed inset-0 z-[100] h-[100dvh] overflow-hidden flex items-center justify-center select-none cursor-pointer transition-opacity duration-500 ${
+        isOpen ? "pointer-events-none opacity-0 delay-500" : "pointer-events-auto opacity-100"
+      }`}
     >
       {/* Warm Ambient Soft Cream Spotlight Overlay */}
       <div
-        className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.45)_0%,_rgba(110,98,86,0.35)_100%)] z-30 pointer-events-none transition-opacity duration-200"
-        style={{ opacity: ambientOpacity }}
+        className={`absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.45)_0%,_rgba(110,98,86,0.35)_100%)] z-30 pointer-events-none transition-opacity duration-700 ${
+          isOpen ? "opacity-0" : "opacity-100"
+        }`}
       />
 
       {/* Top Architectural Warm Champagne Gold Curtain Rod & Finials */}
@@ -136,8 +88,8 @@ export default function CurtainEntranceOverlay({ onOpeningComplete }: CurtainEnt
       <div className="absolute top-1 inset-x-4 h-5 z-40 flex justify-between pointer-events-none px-4">
         {/* Left Wing Rings */}
         <div
-          className="flex justify-between w-1/2 pr-4 transition-transform duration-75"
-          style={{ transform: `translate3d(${leftTranslateX * 0.9}%, 0, 0)` }}
+          className="flex justify-between w-1/2 pr-4 transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          style={{ transform: isOpen ? "translate3d(-100%, 0, 0)" : "translate3d(0, 0, 0)" }}
         >
           {[...Array(7)].map((_, i) => (
             <div
@@ -148,8 +100,8 @@ export default function CurtainEntranceOverlay({ onOpeningComplete }: CurtainEnt
         </div>
         {/* Right Wing Rings */}
         <div
-          className="flex justify-between w-1/2 pl-4 transition-transform duration-75"
-          style={{ transform: `translate3d(${rightTranslateX * 0.9}%, 0, 0)` }}
+          className="flex justify-between w-1/2 pl-4 transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          style={{ transform: isOpen ? "translate3d(100%, 0, 0)" : "translate3d(0, 0, 0)" }}
         >
           {[...Array(7)].map((_, i) => (
             <div
@@ -162,10 +114,10 @@ export default function CurtainEntranceOverlay({ onOpeningComplete }: CurtainEnt
 
       {/* Center Brand Emblem - Logo Only */}
       <div
-        className="absolute z-40 flex flex-col items-center justify-center group"
+        className="absolute z-40 flex flex-col items-center justify-center transition-all duration-500 ease-out"
         style={{
-          opacity: centerOpacity,
-          transform: `scale(${centerScale})`,
+          opacity: isOpen ? 0 : 1,
+          transform: isOpen ? "scale(0.85)" : "scale(1)",
         }}
       >
         <Image
@@ -174,16 +126,16 @@ export default function CurtainEntranceOverlay({ onOpeningComplete }: CurtainEnt
           width={320}
           height={320}
           priority
-          className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl transition-transform duration-300 group-hover:scale-105"
+          className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl"
         />
       </div>
 
       {/* Left Light Pearl White/Cream Wing */}
       <div
-        className="absolute top-0 bottom-0 left-0 w-1/2 z-20 overflow-hidden shadow-2xl"
+        className="absolute top-0 bottom-0 left-0 w-1/2 z-20 overflow-hidden shadow-2xl transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
         style={{
           transformOrigin: "top left",
-          transform: `translate3d(${leftTranslateX}%, 0, 0) scaleX(${fabricGatherScale})`,
+          transform: isOpen ? "translate3d(-105%, 0, 0) scaleX(0.75)" : "translate3d(0, 0, 0) scaleX(1)",
           willChange: "transform",
         }}
       >
@@ -204,10 +156,7 @@ export default function CurtainEntranceOverlay({ onOpeningComplete }: CurtainEnt
         <div className="absolute inset-0 bg-gradient-to-r from-[#BDB0A4] via-[#E8E2D8] via-[#FAF7F2] via-[#FFFFFF] to-[#FFFFFF] opacity-98" />
 
         {/* Shimmering Dynamic Velvet Specular Light Sheen */}
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none"
-          style={{ transform: `translate3d(${progress * 40}%, 0, 0)` }}
-        />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none" />
 
         {/* Pleat Vertical Shadows */}
         <div className="absolute inset-0 flex justify-between pointer-events-none pt-10">
@@ -225,10 +174,10 @@ export default function CurtainEntranceOverlay({ onOpeningComplete }: CurtainEnt
 
       {/* Right Light Pearl White/Cream Wing */}
       <div
-        className="absolute top-0 bottom-0 right-0 w-1/2 z-20 overflow-hidden shadow-2xl"
+        className="absolute top-0 bottom-0 right-0 w-1/2 z-20 overflow-hidden shadow-2xl transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
         style={{
           transformOrigin: "top right",
-          transform: `translate3d(${rightTranslateX}%, 0, 0) scaleX(${fabricGatherScale})`,
+          transform: isOpen ? "translate3d(105%, 0, 0) scaleX(0.75)" : "translate3d(0, 0, 0) scaleX(1)",
           willChange: "transform",
         }}
       >
@@ -249,10 +198,7 @@ export default function CurtainEntranceOverlay({ onOpeningComplete }: CurtainEnt
         <div className="absolute inset-0 bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF] via-[#FAF7F2] via-[#E8E2D8] to-[#BDB0A4] opacity-98" />
 
         {/* Shimmering Dynamic Velvet Specular Light Sheen */}
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none"
-          style={{ transform: `translate3d(${-progress * 40}%, 0, 0)` }}
-        />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none" />
 
         {/* Pleat Vertical Shadows */}
         <div className="absolute inset-0 flex justify-between pointer-events-none pt-10">
