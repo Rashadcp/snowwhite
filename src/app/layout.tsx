@@ -105,7 +105,7 @@ const jsonLd = {
   "@type": ["HomeGoodsStore", "LocalBusiness"],
   "@id": "https://snowwhitedecor.com/#business",
   name: "Snow White",
-  legalName: "Snow White Haute Draperie",
+  legalName: "Snow White",
   alternateName: [
     "Snow White Decor",
     "Snow White Curtains",

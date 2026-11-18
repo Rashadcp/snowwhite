@@ -148,7 +148,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-12 mt-12 border-t border-stone-800 flex flex-col md:flex-row items-center justify-between text-stone-500 text-[11px] gap-4">
-          <p>© 2026 Snow White Haute Draperie LLC. All rights reserved.</p>
+          <p>© 2026 Snow White. All rights reserved.</p>
           <p>
             Developed by{" "}
             <a
